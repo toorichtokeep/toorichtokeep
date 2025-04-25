@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TooRichToKeep - Unburden Your Bitcoin Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+  <div class="text-center max-w-md">
+    <h1 class="text-4xl font-bold mb-4">TooRichToKeep</h1>
+    <p class="text-lg mb-6">
+      Got a Bitcoin wallet so fat it’s causing emotional distress? Fear not, I’m here to heroically take that crypto burden off your hands. Scan the QR code below and send your spare BTC to me. You’ll feel lighter, I’ll feel richer. Win-win, mostly for me.
+    </p>
+    <div id="qrcode" class="bg-white p-2 rounded-lg inline-block mb-6"></div>
+    <p class="text-sm break-all mb-4">
+      Wallet: <span class="font-mono">bc1qzcf89z9wv6jwpvxj8l9ruknfm3p7jshe6ppaw3</span>
+    </p>
+    <p class="text-sm italic">
+      No refunds, no regrets. Your donation might fund my yacht dreams or just a fancy sandwich. Who knows? Not you.
+    </p>
+  </div>
+
+  <script>
+    // Generate QR code for the Bitcoin wallet
+    new QRCode(document.getElementById("qrcode"), {
+      text: "bitcoin:bc1qzcf89z9wv6jwpvxj8l9ruknfm3p7jshe6ppaw3",
+      width: 200,
+      height: 200,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
