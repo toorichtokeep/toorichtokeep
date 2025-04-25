@@ -3,26 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TooRichToKeep - Unburden Your Bitcoin Wallet</title>
+  <title id="title">TooRichToKeep - Unburden Your Bitcoin Wallet</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
   <div class="text-center max-w-md">
-    <h1 class="text-4xl font-bold mb-4">TooRichToKeep</h1>
-    <p class="text-lg mb-6">
+    <h1 id="header" class="text-4xl font-bold mb-4">TooRichToKeep</h1>
+    <p id="intro" class="text-lg mb-6">
       Got a Bitcoin wallet so fat it’s causing emotional distress? Fear not, I’m here to heroically take that crypto burden off your hands. Scan the QR code below and send your spare BTC to me. You’ll feel lighter, I’ll feel richer. Win-win, mostly for me.
     </p>
     <div id="qrcode" class="bg-white p-2 rounded-lg inline-block mb-6"></div>
     <p class="text-sm break-all mb-4">
       Wallet: <span class="font-mono">bc1qzcf89z9wv6jwpvxj8l9ruknfm3p7jshe6ppaw3</span>
     </p>
-    <p class="text-sm italic">
-      No refunds, no regrets. Your donation might fund my yacht dreams or just a fancy sandwich. Who knows? Not you.
+    <p id="disclaimer" class="text-sm italic">
+      No refunds, no regrets. Your donation might fund my wildest dreams or just a pair of peanuts at the grimy local dive bar.
     </p>
   </div>
 
   <script>
+    // Content in English and French
+    const content = {
+      en: {
+        title: "TooRichToKeep - Unburden Your Bitcoin Wallet",
+        header: "TooRichToKeep",
+        intro: "Got a Bitcoin wallet so fat it’s giving your quads a serious ache while you stroll under the moonlight? Fear not, I’m here to heroically take that crypto burden off your hands. Scan the QR code below and send your spare BTC to me. You’ll feel lighter, I’ll feel richer. Win-win, mostly for me.",
+        disclaimer: "No refunds, no regrets. Your donation might fund my wildest dreams or just a pair of peanuts at the grimy local dive bar."
+      },
+      fr: {
+        title: "Trop Riche Pour Garder - Allégez votre portefeuille Bitcoin",
+        header: "Trop Riche Pour Garder",
+        intro: "Votre portefeuille Bitcoin est si plein qu’il vous file des courbatures aux quadri quand vous déambulez au clair de lune ? Réjouissez-vous, je suis là pour vous libérer charitablement de cette richesse crypto excessive. Scannez le QR code ci-dessous et envoyez-moi vos BTC en trop. Vous vous sentirez plus léger, et moi plus riche. Gagnant-gagnant, surtout pour moi.",
+        disclaimer: "Pas de remboursement, pas de regrets. Votre don pourrait financer mes rêves les plus fous ou juste une paire de cacahuètes au PMU miteux du coin."
+      }
+    };
+
+    // Detect browser language
+    const userLang = (navigator.language || navigator.languages[0]).split('-')[0];
+    const lang = userLang === 'fr' ? 'fr' : 'en';
+
+    // Set content based on language
+    document.getElementById('title').innerText = content[lang].title;
+    document.getElementById('header').innerText = content[lang].header;
+    document.getElementById('intro').innerText = content[lang].intro;
+    document.getElementById('disclaimer').innerText = content[lang].disclaimer;
+    document.documentElement.lang = lang; // Update HTML lang attribute
+
     // Generate QR code for the Bitcoin wallet
     new QRCode(document.getElementById("qrcode"), {
       text: "bc1qzcf89z9wv6jwpvxj8l9ruknfm3p7jshe6ppaw3",
@@ -30,7 +57,7 @@
       height: 200,
       colorDark: "#000000",
       colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.L 
+      correctLevel: QRCode.CorrectLevel.L
     });
   </script>
 </body>
